@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redux async example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+       body {
+         background-color: #f9f9f9;
+       }
+       .bs {
+         margin-top: 30px;
+         margin-left: 50px;
+         margin-right: 50px;
+         border-width: 1px;
+         background-color: #fff;
+         border-color: #ddd;
+         border-radius: 4px 4px 0 0;
+         padding: 45px 15px 15px;
+         border-style: solid;
+       }
+       .bs .btn-toolbar+.btn-toolbar {
+            margin-top: 10px;
+        }
+        .bs .dropdown-menu.open {
+            position: static;
+            display: block;
+            margin-bottom: 5px;
+            clear: left;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            float: left;
+            min-width: 160px;
+            padding: 5px 0;
+            margin: 2px 0 0;
+            list-style: none;
+            font-size: 14px;
+            text-align: left;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,.15);
+            border-radius: 4px;
+            box-shadow: 0 6px 12px rgba(0,0,0,.175);
+            background-clip: padding-box;
+        }
+        .show-grid {
+            margin-bottom: 15px
+        }
+        .show-grid [class^=col-] {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: #eee;
+            background-color: rgba(86,61,124,.15);
+            border: 1px solid #ddd;
+            border: 1px solid rgba(86,61,124,.2)
+        }
+        .bs .tooltip {
+            position: relative;
+            display: inline-block;
+            margin: 5px 10px;
+        }
+        .overlay-example {
+            position: relative;
+            height: 120px;
+            padding-top: 30px;
+            text-align: center;
+        }
+        .bs-example-popover-contained {
+            height: 200px;
+        }
+        .bs-example-popover-scroll {
+            overflow: scroll;
+            height: 200px;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- buttons -->
+
+    <div class="bs" id="buttonsInstance"></div>
+    <div class="bs" id="buttonsInstance2"></div>
+    <div class="bs" id="buttonsInstance3"></div>
+    <div class="bs" id="buttonGroupInstance"></div>
+    <div class="bs" id="buttonGroupInstance2"></div>
+    <div class="bs" id="buttonGroupInstance3"></div>
+    <div class="bs" id="buttonGroupInstance4"></div>
+    <div class="bs" id="buttonGroupInstance5"></div>
+    <div class="bs" id="buttonGroupInstance6"></div>
+    <div class="bs" id="LoadingButton"></div>
+    <div class="bs" id="buttonsInstance4"></div>
+    <div class="bs" id="buttonsInstance5"></div>
+    <div class="bs" id="buttonGroupInstance7"></div>
+    <div class="bs" id="buttonsInstance6"></div>
+    <div class="bs" id="customButtonStyle"></div>
+    <div class="bs" id="buttonsInstance7"></div>
+    <div class="bs" id="dropdownInstance"></div>
+    <div class="bs" id="dropdownExample"></div>
+    <div class="bs" id="buttonInstance"></div>
+    <div class="bs" id="buttonsInstance8"></div>
+    <div class="bs" id="buttonsInstance9"></div>
+    <div class="bs" id="buttonsInstance10"></div>
+    <div class="bs" id="buttonsInstance11"></div>
+    <div class="bs" id="MenuItems"></div>
+
+    <!-- Overlays -->
+
+    <!-- <div class="bs" id="modalInstance"></div> -->
+    <div class="bs" id="App"></div>
+    <div class="bs" id="Trigger"></div>
+    <div class="bs" id="Example3"></div>
+    <div class="bs" id="Example4"></div>
+
+    <div class="bs" id="tooltipInstance"></div>
+    <div class="bs" id="positionerInstance3"></div>
+    <div class="bs" id="copyInstance"></div>
+
+    <div class="bs" id="popoverInstance"></div>
+    <div class="bs" id="positionerInstance"></div>
+    <div class="bs" id="positionerInstance2"></div>
+
+<!--
+    <div class="bs bs-example-popover-contained" id="Example8"></div>
+    <div class="bs bs-example-popover-scroll" id="Positioner"></div>
+    <div class="bs" id="Example5"></div>
+    <div class="bs" id="Example6"></div>
+-->
+
+<!-- Page layout -->
+
+<div class="bs" id="gridInstance"></div>
+<div class="bs" id="gridInstance2"></div>
+<div class="bs" id="gridInstance3"></div>
+
+<div class="bs" id="jumbotronInstance"></div>
+<div class="bs" id="pageHeaderInstance"></div>
+
+<div class="bs" id="listgroupInstance"></div>
+<div class="bs" id="listgroupInstance2"></div>
+<div class="bs" id="listgroupInstance3"></div>
+<div class="bs" id="listgroupInstance4"></div>
+<div class="bs" id="listgroupInstance5"></div>
+<div class="bs" id="listgroupInstance6"></div>
+
+<div class="bs" id="tableInstance"></div>
+<div class="bs" id="tableInstance2"></div>
+
+<div class="bs" id="panelInstance0"></div>
+<div class="bs" id="Example7"></div>
+<div class="bs" id="panelsInstance"></div>
+<div class="bs" id="accordionInstance"></div>
+<div class="bs" id="ControlledPanelGroup"></div>
+<div class="bs" id="panelGroupInstance"></div>
+<div class="bs" id="panelInstance"></div>
+<div class="bs" id="panelInstance2"></div>
+<div class="bs" id="panelsInstance2"></div>
+
+<div class="bs" id="wellInstance"></div>
+<div class="bs" id="wellInstance2"></div>
+
+
+<!-- Forms -->
+
+<div class="bs" id="FormExample"></div>
+<div class="bs" id="formInstance"></div>
+<div class="bs" id="formInstance2"></div>
+<div class="bs" id="formInstance3"></div>
+<div class="bs" id="formInstance4"></div>
+<div class="bs" id="formInstance5"></div>
+<div class="bs" id="formInstance6"></div>
+
+<!-- Navigation -->
+
+<div class="bs" id="navbarInstance"></div>
+<div class="bs" id="navbarInstance2"></div>
+<div class="bs" id="navbarInstance3"></div>
+<div class="bs" id="navbarInstance4"></div>
+<div class="bs" id="navInstance"></div>
+<div class="bs" id="NavDropdownExample"></div>
+<div class="bs" id="NavJustified"></div>
+<div class="bs" id="navInstance2"></div>
+
+<div class="bs" id="breadcrumbInstance"></div>
+
+<div class="bs" id="tabsInstance"></div>
+<div class="bs" id="ControlledTabs"></div>
+<div class="bs" id="tabsInstance2"></div>
+<div class="bs" id="tabsInstance3"></div>
+
+<div class="bs" id="PaginationBasic"></div>
+<div class="bs" id="PaginationAdvanced"></div>
+<div class="bs" id="pagerInstance"></div>
+<div class="bs" id="pagerInstance2"></div>
+<div class="bs" id="pagerInstance3"></div>
+
+<!-- Media content -->
+
+<div class="bs" id="imageResponsiveInstance"></div>
+<div class="bs" id="imageShapeInstance"></div>
+<div class="bs" id="thumbnailInstance"></div>
+<div class="bs" id="thumbnailInstance2"></div>
+<div class="bs" id="responsiveEmbedInstance"></div>
+<div class="bs" id="ControlledCarousel"></div>
+<div class="bs" id="carouselInstance"></div>
+<div class="bs" id="mediaAlignmentInstance"></div>
+<div class="bs" id="mediaListInstance"></div>
+<div class="bs" id="mediaInstance"></div>
+
+<!-- Media content -->
+
+<div class="bs" id="glyphInstance"></div>
+<div class="bs" id="labelInstance"></div>
+<div class="bs" id="labelVariationInstance"></div>
+<div class="bs" id="badgeInstance"></div>
+<div class="bs" id="alertInstance"></div>
+<div class="bs" id="AlertDismissable"></div>
+<div class="bs" id="progressInstance"></div>
+<div class="bs" id="progressInstance2"></div>
+<div class="bs" id="progressInstance3"></div>
+<div class="bs" id="progressInstance4"></div>
+<div class="bs" id="progressInstance5"></div>
+<div class="bs" id="progressInstance6"></div>
+<div class="bs" id="progressInstance7"></div>
+
+<!-- Utilities -->
+
+<div class="bs" id="Example"></div>
+<!-- <div class="bs" id="Example2"></div> -->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/static/js/ie-polyfills.js"></script>
+<![endif]-->
+    <script src="/static/bundle.js"></script>
+  </body>
+</html>
